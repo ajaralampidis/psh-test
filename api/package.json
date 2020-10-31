@@ -1,0 +1,33 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "psh-test",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -L"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajaralampidis/psh-test.git"
+  },
+  "author": "Agustin Jaralampidis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ajaralampidis/psh-test/issues"
+  },
+  "homepage": "https://github.com/ajaralampidis/psh-test#readme",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "pg": "^8.4.2",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.3.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
