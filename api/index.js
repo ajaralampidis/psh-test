@@ -11,5 +11,6 @@ conn.sync({force: true})
 		server.listen(backendPort, () => {
 		console.log(`listening at ${backendPort}`);
 		seed()
+		require('./src/helpers/cron_job.js');
 	});
 });

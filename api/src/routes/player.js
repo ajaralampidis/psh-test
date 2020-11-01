@@ -4,7 +4,7 @@ const router = express.Router();
 const { Player } = require('../db.js');
 
 
-router.get('/:id', (req, res) => {
+router.get('find/:id', (req, res) => {
 
 	const {id} = req.params;
 
@@ -34,7 +34,7 @@ router.post('/register', (req, res) => {
 })
 
 
-router.put('/:id', async (req, res) => {
+router.put('modify/:id', async (req, res) => {
 	const {id} = req.params;
 	const {nickname, password, profile_img} = req.body;
 
@@ -66,7 +66,7 @@ router.put('/:id', async (req, res) => {
 })
 
 
-router.delete('/:id', async (req, res) => {
+router.delete('delete/:id', async (req, res) => {
 	const {id} = req.params;
 	const player = await Player.findByPk(id)
 
@@ -84,7 +84,7 @@ router.delete('/:id', async (req, res) => {
 
 })
 
-router.put('/:id/score', async (req, res) => {
+router.put('modify/:id/score', async (req, res) => {
 	const {id} = req.params;
 	const {newScore} = req.body;
 
@@ -115,8 +115,25 @@ router.put('/:id/score', async (req, res) => {
 })
 
 
-router.get('/prueba', (req, res) => {
-	res.send('hola')
+router.get('/prueba', async (req, res) => {
+
+	try {
+		
+		const top = await Player.findAll({
+			order: [
+			['score', 'DESC']
+			],
+			limit: 10 
+		})
+
+		console.log(top)
+
+		res.send(top)
+
+	} catch (error) {
+		res.status(500).send(error) 
+	}
+
 });
 
 router.get('/axios', (req, res) => {

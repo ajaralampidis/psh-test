@@ -6,11 +6,11 @@ module.exports = sequelize => {
 		// top_playerId: FK (player)
 
 		score_record: {
-			type: DataTypes.STRING,
+			type: DataTypes.INTEGER,
 			allowNull: false,
 			validate: {
-				isString(value) {
-					if (typeof value !== 'string') throw new Error('Name must be a string!');
+				points(value) {
+					if (value < 0 || value > 100) throw new Error('Score must be a value between 0 and 100');
 				}
 			}
 		}
