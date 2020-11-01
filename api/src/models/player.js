@@ -32,7 +32,15 @@ module.exports = sequelize => {
 			}
 		},
 
+		score: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+			defaultValue: 25,
+		}
+
 	},{
-		timestamps: false 
+		timestamps: true,
+		updatedAt: false
+		
 	});
 };
