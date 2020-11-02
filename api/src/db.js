@@ -44,17 +44,13 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 
 // ======================= Sequelize Model Relations ======================= //
-const { Match, Player, Top_player } = sequelize.models;
+const { Match, Player } = sequelize.models;
 
 Player.hasMany(Match, { as: 'winner', foreignKey : 'winnerId' }); // foreign key in target model (Match)
 Match.belongsTo(Player, {as: 'winner', foreignKey : 'winnerId'});
 
 Player.hasMany(Match, { as: 'loser', foreignKey : 'loserId' }); // foreign key in target model (Match)
 Match.belongsTo(Player, {as: 'loser', foreignKey : 'loserId'});
-
-Player.hasMany(Top_player); // foreign key in target model (Top_player)
-Top_player.belongsTo(Player);
-
 
 // =============================== Exports ================================= //
 
