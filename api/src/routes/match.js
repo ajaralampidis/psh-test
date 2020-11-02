@@ -5,7 +5,7 @@ const { Player, Match } = require('../db.js');
 const matchFunction = require('../helpers/matchFunction.js')
 
 
-router.get('/:id', (req, res) => {
+router.get('/getById/:id', (req, res) => {
 	const {id} = req.params;
 
 	Match.findByPk(id).then(match => {
