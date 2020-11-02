@@ -1,4 +1,4 @@
-module.exports = function matchFunction(playerA, playerB) {
+module.exports = function matchFunction(playerA, playerB, faked = false) {
 		// ============( Setting player by score )============ //
 
 	let player1; // player with bigger score
@@ -26,8 +26,17 @@ module.exports = function matchFunction(playerA, playerB) {
 
 	let winner;
 	let loser;
+	if (faked) {
+		
+		if (playerA.id === player1.id) {
+			winner = player1;
+			loser = player2;
+		} else {
+			winner = player2;
+			loser = player1;
+		}
 
-	if (Math.random() >= 0.5) {
+	} else if (Math.random() >= 0.5) {
 		winner = player1;
 		loser = player2;
 	} else {
@@ -47,7 +56,6 @@ module.exports = function matchFunction(playerA, playerB) {
 
 	if (scoreDifference === 0) {
 
-
 	 	winner_new_score = winner_prev_score + scorePriceConstant;
 	 	loser_new_score = loser_prev_score - scorePriceConstant;
 
@@ -59,8 +67,8 @@ module.exports = function matchFunction(playerA, playerB) {
 		}
 
 		if (winner === player2) {
-			winner_new_score = Math.ceil( winner_prev_score + (scorePriceConstant + scoreDifference) )
-			loser_new_score = Math.floor( loser_prev_score - (scorePriceConstant + scoreDifference) )
+			winner_new_score = Math.ceil( winner_prev_score + (scoreDifference / scorePriceConstant) )
+			loser_new_score = Math.floor( loser_prev_score - (scoreDifference / scorePriceConstant) )
 		}
 
 	}

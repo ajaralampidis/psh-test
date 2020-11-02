@@ -36,7 +36,7 @@ module.exports = sequelize => {
 		score: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
-			defaultValue: 25,
+			defaultValue: 10,
 			validate: {
 				points(value) {
 					if (value < 0 || value > 100) throw new Error('Score must be a value between 0 and 100');

@@ -48,7 +48,7 @@ router.post('/newMatch', async (req, res) => {
 		await playerB.save();
 		const newMatch = await Match.create(matchResults)
 
-		return res.send(matchResults)
+		return res.send(newMatch)
 
 	} catch(error) {
 
@@ -56,6 +56,34 @@ router.post('/newMatch', async (req, res) => {
 	
 	}
 
+})
+
+router.post('/fakeMatch', async (req, res) => {
+	const { winnerId, loserId } = req.body;
+	try {	
+
+		playerA = await Player.findByPk(winnerId)
+		playerB = await Player.findByPk(loserId)
+
+		const matchResults = matchFunction(playerA, playerB, true)
+
+		if ( playerA.id = matchResults.winnerId ) {
+			playerA.score = matchResults.winner_new_score
+			playerB.score = matchResults.loser_new_score
+		} else {
+			playerA.score = matchResults.loser_new_score
+			playerB.score = matchResults.winner_new_score
+		}
+
+		await playerA.save();
+		await playerB.save();
+		const newMatch = await Match.create(matchResults)
+
+		return res.send(newMatch)
+
+	} catch(error) {
+		res.status(500).send(error)
+	}
 })
 
 
