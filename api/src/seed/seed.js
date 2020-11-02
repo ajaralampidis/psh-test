@@ -12,7 +12,11 @@ module.exports = async function seed() {
 		const playersRequests = []
 
 		for (let i = 0; i < 10; i++) {
-			playersRequests.push(axios.get('https://randomuser.me/api'))
+			try {
+				playersRequests.push(await axios.get('https://randomuser.me/api'))
+			} catch (error) {
+				i--
+			}
 		}
 
 		const rawChunkOfPlayers = await Promise.all(playersRequests);
@@ -30,11 +34,11 @@ module.exports = async function seed() {
 		}
 		
 		const createdPlayers = await Player.bulkCreate(chunkOfPlayers)	
-	
+
 	// =================( Random Matches Creation )==================== //
 		for (let i = 0; i < 30; i++) {
 			try {
-				let randomPicker = () => Math.floor(Math.random() * 11)
+				let randomPicker = () => Math.floor(Math.random() * 10)
 
 				let A = randomPicker()
 				let B = randomPicker()
@@ -66,8 +70,8 @@ module.exports = async function seed() {
 			}
 		}	
 
+		console.log('end of seed')
 	} catch (error) {
 		seed()
 	}
-	console.log('end of seed')
 }
