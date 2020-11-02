@@ -1,11 +1,13 @@
 const axios = require('axios')
 const { Player } = require('../db.js');
 const { Match } = require('../db.js');
-const { Top_player } = require('../db.js');
+const matchFunction = require('../helpers/matchFunction.js')
 
 module.exports = async function seed() {
-
+	console.log("seed Iteration")
 	try {
+
+		// =====================( Player Creation )==================== //
 
 		const playersRequests = []
 
@@ -17,6 +19,7 @@ module.exports = async function seed() {
 		const chunkOfPlayers = []
 
 		for (let i = 0; i < rawChunkOfPlayers.length; i++) {
+
 			let player = {
 				nickname: rawChunkOfPlayers[i].data.results[0].login.username,
 				password: rawChunkOfPlayers[i].data.results[0].login.password,
@@ -26,12 +29,45 @@ module.exports = async function seed() {
 			chunkOfPlayers.push(player)
 		}
 		
-		const createdPlayers = await Player.bulkCreate(chunkOfPlayers)
-		// console.log(createdPlayers)
-		// createdPlayers = [instanceOfPlayerModel, ...]
+		const createdPlayers = await Player.bulkCreate(chunkOfPlayers)	
+	
+	// =================( Random Matches Creation )==================== //
+		for (let i = 0; i < 30; i++) {
+			try {
+				let randomPicker = () => Math.floor(Math.random() * 11)
+
+				let A = randomPicker()
+				let B = randomPicker()
+
+				if (A === B) {
+					A === 10 ? A = 9 : A = A + 1
+				}
+
+				const playerA = createdPlayers[A]	
+				const playerB = createdPlayers[B]
+
+				const matchResults = matchFunction(playerA, playerB)
+
+				if ( playerA.id = matchResults.winnerId ) {
+					playerA.score = matchResults.winner_new_score
+					playerB.score = matchResults.loser_new_score
+				} else {
+					playerA.score = matchResults.loser_new_score
+					playerB.score = matchResults.winner_new_score
+				}
+
+				await playerA.save();
+				await playerB.save();
+				const newMatch = await Match.create(matchResults)
+
+			} catch (error) {
+				console.log(error)
+				i--
+			}
+		}	
 
 	} catch (error) {
-		console.log(error)
+		seed()
 	}
-
+	console.log('end of seed')
 }
