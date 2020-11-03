@@ -10,7 +10,7 @@ function CurrentBest_Table(props) {
             
             <table className={fatherStyles.Ranking_table}>
                 <tr>
-                    <th>Position</th>
+                    <th>#</th>
                 	<th>ID</th>
                     <th>Avatar</th>
                     <th>Nickname</th>

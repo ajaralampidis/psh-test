@@ -10,5 +10,6 @@ FROM(
 		matches as t1
 	INNER JOIN players as t2 ON "winnerId" = t2.id
 	ORDER BY "winnerId", winner_new_score DESC
+	LIMIT 10
 ) as ordered
 ORDER BY winner_new_score DESC;

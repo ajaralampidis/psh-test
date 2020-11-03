@@ -54,7 +54,7 @@ function Ranking() {
 
 		const interval = setInterval(() => {
       	setRefreshFlag(refreshFlag => !refreshFlag);
-    	}, 5000);
+    	}, 10000);
     	
     	return () => clearInterval(interval);
 
@@ -73,6 +73,7 @@ function Ranking() {
         	<div className={styles.Ranking_tableContainer}>
         		
         		{
+
         			currentTable === 'CurrentBest' 
         			? <CurrentBest_Table info={currentBestInfo} />
         			: <AllTimeBest_Table info={allTimeBestInfo}/>

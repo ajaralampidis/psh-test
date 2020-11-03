@@ -15,6 +15,20 @@ router.get('/getById/:id', (req, res) => {
 
 })
 
+router.get('/getAllMatches', (req, res) => {
+	Match.findAll({
+  		order: [ ['id', 'DESC'] ]
+  	})
+	.then(matches => {
+		res.send(matches);
+	})
+	.catch(error => {
+		res.status(500).send(error)
+	})
+
+})
+
+
 router.post('/newMatch', async (req, res) => {
 
 	let {playerA, playerB} = req.body;
