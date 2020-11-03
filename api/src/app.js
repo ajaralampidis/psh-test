@@ -12,14 +12,12 @@ const {
 	frontName 
 } = process.env;
 
-
-// ========================= Express setup ========================== //
+// ========================= Express Init ========================== //
 const server = express();
 server.name = `${serverName}`;
 
-
 // ========================== CORS setup ========================== //
-var corsOptions = {
+let corsOptions = {
   origin: `${frontName}`,
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   methods: "GET, PUT, POST, DELETE"
@@ -33,6 +31,7 @@ server.use(bodyParser.json({limit: '50mb'}));
 
 // ========================== Morgan setup ========================= //
 server.use(morgan('dev'));
+
 
 // ============================= Routes ============================ //
 server.use('/', routes);

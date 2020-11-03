@@ -6,6 +6,11 @@
 	right: 0;
 	margin: auto;
 	padding-left: 35px;
+
+	width: auto;
+	max-width: 90vw;
+	height: auto;
+	max-height: 75vh;
 }
 
 .Home_header {
@@ -18,12 +23,36 @@
 
 .Home_header_title {
 	text-shadow:  3px 3px 5px rgba(0,0,0,0.30);
+	font-size: 7rem;
 }
-
 
 .Home_header_subTitle {
 	text-align: right;
 	font-style: italic;
-	margin-top: -25px;
-	font-size: 1.25em;
+	margin-top: -20px;
+	font-size: 1.20rem;
+}
+
+@media only screen and (max-width: 500px) {
+
+	.Home_header_title {
+		font-size: 5rem;
+	}
+
+	.Home_header_subTitle {
+		margin-top: -15px;
+		font-size: 0.95rem;
+	}
+}
+
+@media only screen and (max-width: 360px) {
+
+	.Home_header_title {
+		font-size: 3.5rem;
+	}
+
+	.Home_header_subTitle {
+		margin-top: -5px;
+		font-size: 0.8rem;
+	}
 }

@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './Home.module.css';
 import animation from "../../assets/giphy2.gif" ;
 

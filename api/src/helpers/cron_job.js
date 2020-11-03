@@ -81,15 +81,15 @@ cron.schedule('*/5 * * * *', async function cronSimulation() {
 })
 
 
-cron.schedule('*/1 * * * *', async () => {
+cron.schedule('*/2 * * * *', async () => {
 	console.log("Score Reduce Iteration")
 	try {
 	
 		const registeredPlayers = await Player.findAll();
 	
 		registeredPlayers.forEach(player => {
-			if (player.score > 3) {
-				player.score = player.score - 3;
+			if (player.score > 1) {
+				player.score = player.score - 1;
 			} else {
 				player.score = 0
 			}

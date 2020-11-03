@@ -1,8 +1,8 @@
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 //Styles
 import 'normalize.css';
@@ -11,6 +11,7 @@ import styles from './App.module.css';
 import Navbar from './components/Navbar/Navbar.js'
 // Sections
 import Home from './sections/Home/Home.js';
+import Ranking from './sections/Ranking/Ranking.js';
 // ================= End Imports ===============//
 
 
@@ -32,7 +33,7 @@ function App() {
           </Route>
 
           <Route path="/ranking">
-            <h1> Ranking </h1>
+            <Ranking />
           </Route>
 
           <Route path="/matches">
