@@ -6,3 +6,25 @@
 .AllTimeBest_date{
     width: 120px;
 }
+
+
+.AllTimeBest_exportButtonContainer {
+	margin-bottom: 66px;
+}
+
+.AllTimeBest_exportButton {
+	all: unset;
+  	cursor: pointer;
+  	padding: 5px;
+  	border-radius: 2px;
+	background-color: #80f0ff;
+	box-shadow: 2px 2px 3px 0 rgba(0,0,0,0.66);
+  	color: purple;
+  	transition: 0.3s ease;
+}
+
+.AllTimeBest_exportButton:hover {
+	box-shadow: 5px 5px 15px 0 rgba(0,0,0,0.33);
+	color: #80f0ff;
+	background-color: #e800e3;
+}

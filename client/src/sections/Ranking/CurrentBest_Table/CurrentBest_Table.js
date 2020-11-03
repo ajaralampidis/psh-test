@@ -5,6 +5,57 @@ import styles from './CurrentBest_Table.module.css';
 function CurrentBest_Table(props) {
     const info = props.info
 
+   // ===================( Event Handlers )=============== //
+
+    const handleExportCsv = event => {
+
+        function download_csv(csv) {
+            var csvFile;
+            var downloadLink;
+        
+            // CSV FILE
+            csvFile = new Blob([csv], {type: "text/csv"});
+        
+            // Download link
+            downloadLink = document.createElement("a");
+        
+            // File name
+            downloadLink.download = 'Flip_the_Coin_Current_Best_Ones';
+        
+            // We have to create a link to the file
+            downloadLink.href = window.URL.createObjectURL(csvFile);
+        
+            // Make sure that the link is not displayed
+            downloadLink.style.display = "none";
+        
+            // Add the link to your DOM
+            document.body.appendChild(downloadLink);
+        
+            // Lanzamos
+            downloadLink.click();
+        }
+        
+        function export_table_to_csv(html) {
+            var csv = [];
+            var rows = document.querySelectorAll("table tr");
+            
+            for (var i = 0; i < rows.length; i++) {
+                var row = [], cols = rows[i].querySelectorAll("td, th");
+                
+                for (var j = 0; j < cols.length; j++) 
+                    row.push(cols[j].innerText);
+                
+                csv.push(row.join(","));        
+            }
+        
+            // Download CSV
+            download_csv(csv.join("\n"));
+        }
+
+        export_table_to_csv()
+
+    }
+
     return (
     <div className={styles.CurrentBest}>
             
@@ -53,6 +104,13 @@ function CurrentBest_Table(props) {
                     })
                 }
             </table>
+
+
+            <div className={styles.CurrentBest_exportButtonContainer}>
+                <button onClick={handleExportCsv} className={styles.CurrentBest_exportButton}>
+                    Export to CSV !
+                </button>
+            </div>
 
         </div>
     );
