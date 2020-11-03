@@ -1,0 +1,29 @@
+.Home_mainPic {
+	mix-blend-mode: screen;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	padding-left: 35px;
+}
+
+.Home_header {
+	display: inline-block;
+	border-top: 1px solid #80f0ff;
+	border-bottom: 1px solid #80f0ff;
+	padding-top: -60px;
+	margin-top: 25px;
+}
+
+.Home_header_title {
+	text-shadow:  3px 3px 5px rgba(0,0,0,0.30);
+}
+
+
+.Home_header_subTitle {
+	text-align: right;
+	font-style: italic;
+	margin-top: -25px;
+	font-size: 1.25em;
+}

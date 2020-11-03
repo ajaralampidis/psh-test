@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'The Brithney';
+  src: url('The Brithney.eot');
+  src: url('The Brithney.eot?#iefix') format('embedded-opentype'),
+       url('The Brithney.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TheBrithney';
+  src: url('TheBrithney.svg#TheBrithney') format('svg'),
+       url('TheBrithney.ttf') format('truetype'),
+       url('TheBrithney.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+

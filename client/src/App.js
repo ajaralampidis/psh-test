@@ -1,25 +1,30 @@
-import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
+//Styles
+import 'normalize.css';
+import styles from './App.module.css';
+// Components
+import Navbar from './components/Navbar/Navbar.js'
+// Sections
+import Home from './sections/Home/Home.js';
+// ================= End Imports ===============//
+
 
 function App() {
   return (
-    <div className="App">
+    <div className={styles.App}>
       <Router>
 
-        <Link to='/'>| Home |</Link>
-        <Link to='/register'>| Register |</Link>
-        <Link to='/ranking'>| Top 10 |</Link>
-        <Link to='/matches'>| Matches |</Link>
+        <Navbar />
 
         <Switch>
           
           <Route exact path="/">
-            <h1> HOME </h1>
+            <Home />
           </Route>
 
           <Route path="/register">
@@ -27,7 +32,7 @@ function App() {
           </Route>
 
           <Route path="/ranking">
-            <h1> Top 10 </h1>
+            <h1> Ranking </h1>
           </Route>
 
           <Route path="/matches">
